@@ -11,7 +11,7 @@ def file_filter(name):
 
 def file_times(path):
     for top_level in filter(file_filter, os.listdir(path)):
-        for root, dirs, files in os.walk(top_level):
+        for root, dirs, files in os.walk(os.path.join(path, top_level)):
             for file in filter(file_filter, files):
                 yield os.stat(os.path.join(root, file)).st_mtime
 
